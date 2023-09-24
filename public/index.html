@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This is an SEO Change--> <!--Adding a relevant meta description of your application-->
+    <meta name="description" content="Your personal financial assistant, providing real-time insights into your cash flow and helping you manage your money more effectively">
+    <!-- This is an SEO Change--> <!--Adding the Title for your application-->
+    <title>TYS - The Only Stop to Track Your Spends</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- This is a Semantic HTML Change - Separating the menu using header from rest of the application-->
+    <header>
+        <nav class="topnav">
+            <!-- This is an A11y change - Defining the type of input as button -->
+            <a href="index.html"> <input type="button" class="button1" value="TrackYourSpends"> </a>
+            <nav class="topnav-right">
+            <a href="index.html"> <input type="button" class="button1" value="Home"> </a>
+            <a href="about.html"> <input type="button" class="button1" value="About"> </a>
+            <a href="login.html"> <input type="button" class="button1" value="Login"> </a>
+            <!-- This is an A11y change - Skip to the desired section of the page -->
+            <a href="#sign-up"> <input type="button" class="button1" value="Sign Up"> </a>
+            <a href="https://google.com"> <input type="button" class="button1" value="Google"> </a>
+            </nav>
+        </nav>
+    </header>
+
+    <!-- This is a Semantic HTML Change - Using section tag -->
+    <section class='description'>
+		<br><br><br><br><br>
+		<center>
+            <!-- This is an SEO Change--> <!--Using different tags to display hierarchy-->
+            <h1>TrackYourSpends easily with TYS</h1>
+            <p>and let us hear the words "TYSM" later</p>
+		</center>
+		<br><br><br><br><br><br><br><br>
+	</section>
+
+    <div class="container">
+            <br>
+            <h1>Stay on track</h1>
+                <p>
+                    Do you know where you are spending your money? If you really stop to track it down,
+                    you would get surprised! Proper budget management depends on real data... and this
+                    app will help you with that!
+                </p><br>
+
+            <h1>Alerts</h1>
+            <p>
+                What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
+            </p><br>
+
+            <h1>Results</h1>
+                <p>
+                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
+                    Also, they to live happier lives... since they expend without guilt or fear... 
+                    because they know it is all good and accounted for.
+                </p><br>
+
+            <h1>Free</h1>
+            <p>
+                This app is absolutely free!!!!!!
+            </p><br>
+    </div>
+
+    <!-- <canvas id="myChart" width="200" height="200"></canvas> -->
+    <h1>Chart</h1>
+    <canvas id="myChart" height="400" width="400" style="min-width: 40px; max-width: 400px; min-height: 40px; max-height: 400px;"></canvas>
+    <br><br>
+
+
+    <!-- This is a Semantic HTML Change - Using a footer tag -->
+    <footer class='footer'>
+		<br>
+			<center><p>All rights reserved &copy; Fabio Nolasco</p></center>
+		<br>
+	</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" integrity="sha512-SIMGYRUjwY8+gKg7nn9EItdD8LCADSDfJNutF9TPrvEo86sQmFMh6MyralfIyhADlajSxqc7G0gs7+MwWF/ogQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var dataSource = {
+            datasets: [
+                {
+                    data: [],
+                    backgroundColor: [
+                        '#ffcd56',
+                        '#ff6384',
+                        '#36a2eb',
+                        '#fd6b19',
+                    ]
+                }
+            ],
+            labels: [
+            ]
+        };
+
+        function createChart() {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: dataSource
+            });
+        }
+
+        function getBudget() {
+            axios.get('http://localhost:3000/budget')
+            .then(function (res) {
+                console.log(res);
+                for (var i=0; i<res.data.myBudget.length; i++) {
+                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+                    dataSource.labels[i] = res.data.myBudget[i].title;
+                }
+                createChart();
+            })
+        }
+        getBudget();
+    </script>
+</body>
+</html>
