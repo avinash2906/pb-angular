@@ -1,7 +1,8 @@
-<nav>
-  <ul>
-      <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [routerLink]="['/about']">About</a></li>
-      <li><a [routerLink]="['/login']">Login</a></li>
-  </ul>
+<nav class="topnav">
+  <a [routerLink]="['/']"> <input type="button" class="button1" value="Home"> </a>
+  <a [routerLink]="['/about']"> <input type="button" class="button1" value="About"> </a>
+  <a [routerLink]="['/login']"> <input type="button" class="button1" value="Login"> </a>
+  <a href="#sign-up"> <input type="button" class="button1" value="Sign Up"> </a>
+  <a href="#main" class="button1">Skip to content</a>
+  <a [routerLink]="['/contact']"> <input type="button" class="button1" value="Contact"> </a>
 </nav>

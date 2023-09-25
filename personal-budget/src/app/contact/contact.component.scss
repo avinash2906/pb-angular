@@ -1,0 +1,11 @@
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 50px;
+  }
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  }

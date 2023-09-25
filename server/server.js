@@ -10,7 +10,7 @@ const budget = {
     myBudget: [
         {
             title: 'Eat out',
-            budget: 25
+            budget: 50
         },
         {
             title: 'Rent',
@@ -20,6 +20,22 @@ const budget = {
             title: 'Grocery',
             budget: 110
         },
+        {
+            "title": "Entertainment",
+            "budget": 30
+        },
+        {
+            "title": "Travel",
+            "budget": 50
+        },
+        {
+            "title": "Emergency",
+            "budget": 100
+        },
+        {
+            "title": "Miscellaneous",
+            "budget": 100
+        }
     ]
 };
 
